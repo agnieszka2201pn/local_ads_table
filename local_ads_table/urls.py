@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from table_app.views import BasicView
+from table_app.views import BasicView, AddUser, NewAd
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('basic_view', BasicView.as_view()),
+    path('basic_view/', BasicView.as_view()),
+    path('add_user/', AddUser.as_view()),
+    path('new_ad/', NewAd.as_view()),
 ]

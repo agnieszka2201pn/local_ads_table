@@ -7,40 +7,45 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Title</title>
+    <title>Lokalna Tablica Ogłoszeń</title>
 </head>
 <body>
 <div class="container p-3 my-3 border bg-primary text-white">
-Welcome to the local ads table!
+Witamy w Lokalnej Tablicy Ogłoszeń.
 </div>
-
+<form action="" method = "POST">
+        {% csrf_token %}
 <div class="row bg-success text-dark" >
-  <div class="col"> Kategoria ogłoszenia
-  <ul class="list-group">
-    <li class="list-group-item">First item</li>
-    <li class="list-group-item">Second item</li>
-    <li class="list-group-item">Third item</li>
-  </ul>
-      <input type="submit" class="btn btn-info" value="Submit Button">
+  <div class="col"> Kategoria ogłoszenia <br>
+
+  <select multiple name="category" value="Kategoria">
+          {%  for category in categories %}
+              <option value="category.0">{{category.1}}</option>
+      {% endfor %}
+    </select>
+   <input type="text" class="btn btn-info" value="Zatwierdź">
   </div>
-  <div class="col">Autor ogłoszenia
-   <ul class="list-group">
-    <li class="list-group-item">First item</li>
-    <li class="list-group-item">Second item</li>
-    <li class="list-group-item">Third item</li>
-  </ul>
-      <input type="submit" class="btn btn-info" value="Submit Button">
+
+  <div class="col">Autor ogłoszenia <br>
+  <select multiple name="author" value="Autor ogłoszenia">
+          {%  for author in authors %}
+              <option value="author.id">{{author.surname}}</option>
+      {% endfor %}
+  </select>
+      <input type="text" class="btn btn-info" value="Zatwierdź">
   </div>
   <div class="col"> Słowo kluczowe
-   <ul class="list-group">
-    <li class="list-group-item">First item</li>
-    <li class="list-group-item">Second item</li>
-    <li class="list-group-item">Third item</li>
-  </ul>
-<input type="submit" class="btn btn-info" value="Submit Button">
+      <textarea maxlength="64" name="keyword">
+
+      </textarea>
+
+<input type="text" class="btn btn-info" value="Zatwierdź">
   </div>
 </div>
-
+<div class="container p-3 my-3 border bg-primary text-white">
+<input type="submit" value="Wyszukaj ogłoszenia">
+</div>
+</form>
 </body>
-<script src="js/basic_view.js"></script>
+<script src="basic_view.js" type="text/javascript"></script>
 </html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Zarejestruj autora ogłoszeń </title>
+</head>
+
+<div class="container p-3 my-3 border bg-primary text-dark">
+Dodaj ogłoszenie
+
+<body>
+<div class = 'row bg-primary text-dark' >
+<form action ="" method = "POST">
+    {%  csrf_token %}
+    <label> Podaj tytuł </label>
+    <input type="text" name="title" maxlength="64"> <br>
+    <label> Wpisz treść ogłoszenia </label>
+    <textarea name="content"> </textarea><br>
+    <label> Czy ogłoszenie jest aktywne? </label>
+    <input type="checkbox" name="active"> <br>
+    <label> Wybierz kategorię </label>
+    <select name="category">
+        {% for category in categories %}
+        <option value="category.0"> {{ category.1 }}</option>
+        {%  endfor %}
+    </select> <br>
+<label> Wybierz autora </label>
+    <select  name="author">
+        {% for author in authors %}
+        <option value='author.id'> {{ author.surname }}</option>
+        {%  endfor %}
+    </select> <br>
+    <input type="submit" name="submit" value="Zatwierdź">
+</form>
+</div>
+</div>
+</body>
+</html>
