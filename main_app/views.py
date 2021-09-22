@@ -1,15 +1,17 @@
+from django.shortcuts import render
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
-from table_app.models import list_of_categories, User, Ad
+from main_app.models import list_of_categories, User, Ad
 
 
 class BasicView(View):
     def get(self, request):
         categories = list_of_categories
         authors = User.objects.all()
-        ctx = {'categories':categories, 'authors':authors}
+        ctx = {'categories': categories, 'authors':authors}
         return render(request, 'basic_view.html', ctx)
 
     def post(self,request):
@@ -67,6 +69,8 @@ class NewAd(View):
         active = request.POST.get('active') == 'on'
         category = int(request.POST.get('category'))
         user = int(request.POST.get('author'))
-        new_ad = Ad.objects.create(title=title, content=content, active=active, user_id=user)
-        new_ad.category.add(category)
+        new_ad = Ad.objects.create(title=title, content=content, active=active, category=category, user_id=user)
         return HttpResponse('Dodano ogłoszenie')
+
+
+# dodać widoki: - wyświetlania wyszukanych ogłoszeń

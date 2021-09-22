@@ -18,10 +18,10 @@ Witamy w Lokalnej Tablicy Ogłoszeń.
 <div class="row bg-success text-dark" >
   <div class="col"> Kategoria ogłoszenia <br>
 
-  <select multiple name="category" value="Kategoria">
-          {%  for category in categories %}
-              <option value="category.0">{{category.1}}</option>
-      {% endfor %}
+  <select multiple name="category">
+      {%  for category in categories %}
+              <option value={{ category.0 }}>{{category.1}}</option>
+          {% endfor %}
     </select>
    <input type="text" class="btn btn-info" value="Zatwierdź">
   </div>
@@ -29,7 +29,7 @@ Witamy w Lokalnej Tablicy Ogłoszeń.
   <div class="col">Autor ogłoszenia <br>
   <select multiple name="author" value="Autor ogłoszenia">
           {%  for author in authors %}
-              <option value="author.id">{{author.surname}}</option>
+              <option value={{ author.id }}>{{author.surname}}</option>
       {% endfor %}
   </select>
       <input type="text" class="btn btn-info" value="Zatwierdź">

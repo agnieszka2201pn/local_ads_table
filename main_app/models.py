@@ -1,5 +1,8 @@
 from django.db import models
 
+# Create your models here.
+from django.db import models
+
 # tabela ogłoszeniodawców
 
 class User(models.Model):
@@ -8,16 +11,13 @@ class User(models.Model):
     phone_number = models.IntegerField(null=True)
     email = models.CharField(max_length=64, unique=True)
 
+# możliwe kategorie ogłoszeń
 
-# tabela kategorii usług
-
-list_of_categories = ((1, 'odzież'),
+list_of_categories = ((0, 'inne'),
+                      (1, 'odzież'),
                       (2, 'motoryzacja'),
                       (3, 'usługi'),
                       (4, 'żywność'))
-
-class Category(models.Model):
-    name = models.IntegerField(choices=list_of_categories)
 
 # tabela ogłoszeń
 
@@ -25,5 +25,5 @@ class Ad(models.Model):
     title = models.CharField(max_length=64, null=True)
     content = models.TextField(null=True)
     active = models.BooleanField(default=True)
-    category = models.ManyToManyField(Category)
+    category = models.IntegerField(choices=list_of_categories, default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
