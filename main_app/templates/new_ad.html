@@ -30,7 +30,7 @@ Dodaj ogłoszenie
         {%  endfor %}
     </select> <br>
 <label> Wybierz autora </label>
-    <select  multiple name="author">
+    <select name="author">
         {% for author in authors %}
         <option value= {{ author.id }}> {{ author.surname }}</option>
         {%  endfor %}

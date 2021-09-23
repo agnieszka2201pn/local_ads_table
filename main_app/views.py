@@ -15,27 +15,43 @@ class BasicView(View):
         return render(request, 'basic_view.html', ctx)
 
     def post(self,request):
-        category = request.POST.get('category')
-        author = request.POST.get('author')
-        keyword = request.POST.getlist('keyword')
-        if keyword and category and author:
-            all_ads = Ad.objects.all()
-            contents = []
-            chosen_ads = []
-            for ad in all_ads:
-                if keyword in ad.content:
-                    contents.append(ad.id)
-            for i in range(0, len(contents)):
-                chosen_ad=Ad.objects.get(category=category, user=author, id=contents[i])
-                chosen_ads.append(chosen_ad)
-        if category and author:
-            chosen_ads = Ad.objects.get(category=category, user=author)
-        elif author:
-            chosen_ads = Ad.objects.get(user=author)
-        elif category:
-            chosen_ads = Ad.objects.get(category=category)
+        categories = request.POST.getlist('category')
+        authors = request.POST.getlist('author')
+        keywords = str(request.POST.get('keyword'))
+        # keywords_list = []
+        # for keyword in keywords:
+        #     keywords_list.append(keyword)
+        chosen_ads = []
 
-        return HttpResponse(chosen_ads)
+        if categories or authors or keywords:
+
+            if keywords:
+                result = Ad.objects.filter(content__icontains=keywords)
+                if result:
+                    chosen_ads.append(Ad.objects.get(content__contains=keywords))
+                else:
+                    pass
+
+            if categories:
+                for i in range(0, len(categories)):
+                    result = Ad.objects.get(category=int(categories[i]))
+                    if result not in chosen_ads:
+                        chosen_ads.append(result)
+
+            if authors:
+                for i in range(0, len(authors)):
+                    result = Ad.objects.get(user=int(authors[i]))
+                    if result not in chosen_ads:
+                        chosen_ads.append(result)
+
+        else:
+            return HttpResponse('podaj kryteria wyszukiwania')
+
+        if len(chosen_ads) > 0:
+            ctx = {'chosen_ads': chosen_ads}
+            return render(request, "filtered_ads.html", ctx)
+        else:
+            return HttpResponse('nie znaleziono ogłoszeń')
 
 # może zrobić w JS wybieranie kategorii i autora, a później jeden wspólny submit?
 

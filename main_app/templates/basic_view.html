@@ -18,34 +18,38 @@ Witamy w Lokalnej Tablicy Ogłoszeń.
 <div class="row bg-success text-dark" >
   <div class="col"> Kategoria ogłoszenia <br>
 
-  <select multiple name="category">
+  <select multiple name="category" class="category">
       {%  for category in categories %}
               <option value={{ category.0 }}>{{category.1}}</option>
           {% endfor %}
     </select>
-   <input type="text" class="btn btn-info" value="Zatwierdź">
+{#   <input type="submit" class="btn btn-info" value="Zaznacz wszystkie">#}
   </div>
 
   <div class="col">Autor ogłoszenia <br>
-  <select multiple name="author" value="Autor ogłoszenia">
+  <select multiple name="author" class="author">
           {%  for author in authors %}
               <option value={{ author.id }}>{{author.surname}}</option>
       {% endfor %}
   </select>
-      <input type="text" class="btn btn-info" value="Zatwierdź">
+{#      <input type="text" class="btn btn-info" value="Zatwierdź">#}
   </div>
   <div class="col"> Słowo kluczowe
-      <textarea maxlength="64" name="keyword">
+      <input type="text" maxlength="64" name="keyword">
 
-      </textarea>
-
-<input type="text" class="btn btn-info" value="Zatwierdź">
+{#<input type="text" class="btn btn-info" value="Zatwierdź">#}
   </div>
 </div>
 <div class="container p-3 my-3 border bg-primary text-white">
 <input type="submit" value="Wyszukaj ogłoszenia">
 </div>
 </form>
+<div class="container p-3 my-3 border text-dark">
+<a href='/add_user/'> Chcesz dodać ogłoszenie? Najpierw zarejestruj się w bazie.</a>
+</div>
+<div class="container p-3 my-3 border text-dark">
+<a href="/new_ad/">Jesteś już zarejestrowanym użytkownikiem? Tutaj możesz dodać swoje ogłoszenie.</a>
+</div>
 </body>
-<script src="basic_view.js" type="text/javascript"></script>
+{#<script src="js/app.js"></script>#}
 </html>
