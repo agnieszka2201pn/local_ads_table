@@ -18,17 +18,19 @@ class BasicView(View):
         categories = request.POST.getlist('category')
         authors = request.POST.getlist('author')
         keywords = str(request.POST.get('keyword'))
-        # keywords_list = []
-        # for keyword in keywords:
-        #     keywords_list.append(keyword)
         chosen_ads = []
 
         if categories or authors or keywords:
 
             if keywords:
                 result = Ad.objects.filter(content__icontains=keywords)
+                result2 = Ad.objects.filter(title__icontains=keywords)
                 if result:
-                    chosen_ads.append(Ad.objects.get(content__contains=keywords))
+                    for item in result:
+                        chosen_ads.append(item)
+                elif result2:
+                    for item in result2:
+                        chosen_ads.append(item)
                 else:
                     pass
 

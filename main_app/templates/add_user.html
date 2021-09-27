@@ -9,25 +9,25 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Zarejestruj autora ogłoszeń </title>
 </head>
-
-<div class="container p-3 my-3 border bg-primary text-white">
-Zarejestruj autora ogłoszeń
-
 <body>
-<div class = row bg-success text-dark" >
+<div class="container p-3 my-3 text-dark">
+<div class = "row p-3 my-3 text-dark" >
+Zarejestruj autora ogłoszeń:
+</div>
+
 <form action ="" method = "POST">
     {%  csrf_token %}
-    <label> Podaj imię </label>
+    <label> Podaj imię* </label>
     <input type="text" name="name" maxlength="64"> <br>
-    <label> Podaj nazwisko </label>
+    <label> Podaj nazwisko* </label>
     <input type="text" name="surname" maxlength="64"> <br>
     <label> Podaj nr telefonu </label>
     <input type="number" name="phone"> <br>
-    <label> Podaj adres email </label>
+    <label> Podaj adres email* </label>
     <input type="email" name="email" > <br>
+    *pola obowiązkowe <br>
     <input type="submit" name="submit" value="Zatwierdź">
 </form>
-</div>
 </div>
 </body>
 </html>
