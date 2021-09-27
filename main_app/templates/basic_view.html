@@ -10,45 +10,61 @@
     <title>Lokalna Tablica Ogłoszeń</title>
 </head>
 <body>
-<div class="container p-3 my-3 border bg-primary text-white">
-Witamy w Lokalnej Tablicy Ogłoszeń.
+<div class="container p-3 my-3 border text-dark">
+<div class="row p-3 my-3 border text-dark">
+WITAMY W LOKALNEJ TABLICY OGŁOSZEŃ DSM NIEPRUSZEWO
 </div>
-<form action="" method = "POST">
-        {% csrf_token %}
-<div class="row bg-success text-dark" >
-  <div class="col"> Kategoria ogłoszenia <br>
 
-  <select multiple name="category" class="category">
+<div class = 'row'>
+    <div class="col p-3 my-3 border text-dark">
+    Szukasz czegoś konkretnego? Wybierz z poniższych opcji:
+    </div>
+    <div class="col p-3 my-3 border text-dark">
+    Chcesz dodać ogłoszenie? Najpierw zarejestruj się w bazie.
+    <a href='/add_user/'> Kliknij tutaj </a>
+    </div>
+    <div class="col p-3 my-3 border text-dark">
+    Jesteś już zarejestrowanym użytkownikiem? Tutaj możesz dodać swoje ogłoszenie.
+    <a href="/new_ad/"> Kliknij tutaj </a>
+    </div>
+</div>
+
+ <form action="" method = "POST">
+        {% csrf_token %}
+
+ <div class="row">
+     <div class="col p-3 my-3 border text-dark">
+        Kategoria ogłoszenia <br>
+
+     <select multiple name="category" class='select2-dropdown'>
       {%  for category in categories %}
               <option value={{ category.0 }}>{{category.1}}</option>
           {% endfor %}
-    </select>
-{#   <input type="submit" class="btn btn-info" value="Zaznacz wszystkie">#}
-  </div>
+        </select> <br>
+{#        <input type="submit" class="btn btn-info" value="Zaznacz wszystkie">#}
+     </div>
 
-  <div class="col">Autor ogłoszenia <br>
-  <select multiple name="author" class="author">
+     <div class="col p-3 my-3 border text-dark">
+        Autor ogłoszenia <br>
+         <select multiple name="author" class="author">
           {%  for author in authors %}
-              <option value={{ author.id }}>{{author.surname}}</option>
-      {% endfor %}
-  </select>
-{#      <input type="text" class="btn btn-info" value="Zatwierdź">#}
-  </div>
-  <div class="col"> Słowo kluczowe
-      <input type="text" maxlength="64" name="keyword">
+              <option value={{ author.id }}> {{ author.name }} {{author.surname}}</option>
+            {% endfor %}
+         </select> <br>
+{#      <input type="text" class="btn btn-info" value="Zaznacz wszystkich">#}
+    </div>
 
-{#<input type="text" class="btn btn-info" value="Zatwierdź">#}
-  </div>
-</div>
-<div class="container p-3 my-3 border bg-primary text-white">
-<input type="submit" value="Wyszukaj ogłoszenia">
-</div>
-</form>
-<div class="container p-3 my-3 border text-dark">
-<a href='/add_user/'> Chcesz dodać ogłoszenie? Najpierw zarejestruj się w bazie.</a>
-</div>
-<div class="container p-3 my-3 border text-dark">
-<a href="/new_ad/">Jesteś już zarejestrowanym użytkownikiem? Tutaj możesz dodać swoje ogłoszenie.</a>
+     <div class="col p-3 my-3 border text-dark"> Słowo kluczowe
+      <input type="text" maxlength="64" name="keyword">
+     </div>
+
+ </div>
+
+    <div class="row p-3 my-3 border text-dark">
+    <input type="submit" value="Wyszukaj ogłoszenia">
+    </div>
+ </form>
+
 </div>
 </body>
 {#<script src="js/app.js"></script>#}
