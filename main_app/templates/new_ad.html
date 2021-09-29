@@ -21,22 +21,17 @@ Dodaj ogłoszenie
     {%  csrf_token %}
     <label> Podaj tytuł </label>
     <input type="text" name="title" maxlength="64"> <br>
-    <label> Wpisz treść ogłoszenia </label>
-    <textarea name="content"> </textarea><br>
-    <label> Czy ogłoszenie jest aktywne? </label>
-    <input type="checkbox" name="active"> <br>
     <label> Wybierz kategorię </label>
     <select name="category">
         {% for category in categories %}
         <option value= {{category.0 }}> {{ category.1 }}</option>
         {%  endfor %}
     </select> <br>
-<label> Wybierz autora </label>
-    <select name="author">
-        {% for author in authors %}
-        <option value= {{ author.id }}> {{ author.name }} {{ author.surname }}</option>
-        {%  endfor %}
-    </select> <br>
+    <label> Wpisz treść ogłoszenia </label>
+    <textarea name="content"> </textarea><br>
+    <label> Dane kontaktowe </label>
+    <label> Podaj swoje dane kontaktowe (imię, nazwisko, email, telefon) </label>
+    <input type="text" name="contact"> <br>
     <input type="submit" name="submit" value="Zatwierdź">
 </form>
 </div>

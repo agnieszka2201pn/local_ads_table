@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from main_app.views import BasicView, AddUser, NewAd
+from main_app.views import BasicView, NewAd, AllAds, RemoveAd
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('basic_view/', BasicView.as_view()),
-    path('add_user/', AddUser.as_view()),
     path('new_ad/', NewAd.as_view()),
+    path('all_ads/', AllAds.as_view()),
+    path('remove_ad/<int:ad_id>/', RemoveAd.as_view()),
 ]

@@ -12,20 +12,19 @@
 <body>
 <div class="container p-3 my-3 text-dark">
 <div class="row p-3 my-3 border text-dark">
+    <strong>
 WITAMY W LOKALNEJ TABLICY OGŁOSZEŃ DSM NIEPRUSZEWO
+    </strong>
 </div>
 
 <div class = 'row'>
     <div class="col p-3 my-3 border text-dark">
-    Szukasz czegoś konkretnego? Wybierz z poniższych opcji:
+    Szukasz czegoś konkretnego? Wybierz z poniższych opcji lub <br>
+        <a href="/all_ads"> pokaż wszystkie ogłoszenia </a>
     </div>
     <div class="col p-3 my-3 border text-dark">
-    Chcesz dodać ogłoszenie? Najpierw zarejestruj się w bazie.
-    <a href='/add_user/'> Kliknij tutaj </a>
-    </div>
-    <div class="col p-3 my-3 border text-dark">
-    Jesteś już zarejestrowanym użytkownikiem? Tutaj możesz dodać swoje ogłoszenie.
-    <a href="/new_ad/"> Kliknij tutaj </a>
+    Chcesz dodać ogłoszenie?
+    <a href='/new_ad/'> Kliknij tutaj </a>
     </div>
 </div>
 
@@ -36,36 +35,29 @@ WITAMY W LOKALNEJ TABLICY OGŁOSZEŃ DSM NIEPRUSZEWO
      <div class="col p-3 my-3 border text-dark">
         Kategoria ogłoszenia <br>
 
-     <select multiple name="category" class='select2-dropdown'>
+     <select name="category" class='select2-dropdown'>
+            <option value="7"> dowolna </option>
       {%  for category in categories %}
               <option value={{ category.0 }}>{{category.1}}</option>
           {% endfor %}
         </select> <br>
-{#        <input type="submit" class="btn btn-info" value="Zaznacz wszystkie">#}
      </div>
-
-     <div class="col p-3 my-3 border text-dark">
-        Autor ogłoszenia <br>
-         <select multiple name="author" class="author">
-          {%  for author in authors %}
-              <option value={{ author.id }}> {{ author.name }} {{author.surname}}</option>
-            {% endfor %}
-         </select> <br>
-{#      <input type="text" class="btn btn-info" value="Zaznacz wszystkich">#}
-    </div>
-
-     <div class="col p-3 my-3 border text-dark"> Słowo kluczowe
-      <input type="text" maxlength="64" name="keyword">
-     </div>
-
  </div>
 
+<div class="row p-3 my-3 border text-dark"> Słowo kluczowe
+    <input type="text" maxlength="64" name="keyword">
+</div>
+
     <div class="row p-3 my-3  text-dark">
-    <input type="submit" value="Wyszukaj ogłoszenia">
+    <input type="submit" name='selected' value="Wyszukaj ogłoszenia">
     </div>
  </form>
 
 </div>
 </body>
-{#<script src="js/app.js"></script>#}
+
+{#<footer>#}
+{#        Lokalna tablica ogłoszeń, wersja: {{ version }} <br>#}
+{#        Dzisiaj jest {{ now }}#}
+{#</footer>#}
 </html>

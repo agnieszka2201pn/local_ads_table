@@ -9,34 +9,34 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <title>Wyszukane ogłoszenia</title>
 </head>
-
+<body>
 <div class="container p-3 my-3 border text-dark">
 Znaleziono poniższe ogłoszenia <br>
 <table class="table table-striped table-bordered">
 <thead>
 <tr>
+    <th> Numer ogłoszenia </th>
     <th>Tytuł</th>
     <th> Treść ogłoszenia</th>
-    <th> Czy jest aktywne?</th>
     <th> Kategoria</th>
-    <th> Autor ogłoszenia </th>
+    <th> Dane kontaktowe </th>
+    <th> Usuwanie ogłoszenia </th>
 </tr>
 </thead>
 
     {% for ad in chosen_ads %}
-        <tr> <td>{{ ad.title }} </td>
+        <tr>
+        <td> {{ ad.id }} </td>
+        <td>{{ ad.title }} </td>
         <td> {{ ad.content }}</td>
-        <td>{{ ad.active }}</td>
         <td> {{ ad.get_category_display }}</td>
-        <td>{{ ad.user.name }} {{ ad.user.surname }}<br>
-        {{ ad.user.email }} <br>
-        {{ ad.user.phone_number }}</td>
+        <td>{{ ad.contact}} </td>
+        <td>
+            <a href="/remove_ad/{{ ad.id }}/">usuń ogłoszenie</a>
+        </td>
         </tr>
     {% endfor %}
 </table>
-<body>
-<div class = 'row bg-primary text-dark' >
-</div>
 </div>
 </body>
 </html>
