@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container p-3 my-3 border text-dark">
+<div class="row p3 my-3 border text-dark">
+    <strong>
+Czy na pewno chcesz usunąć ogłoszenie:
+        "{{ ad.title }}"?
+    </strong>
+</div>
+
+<div class = 'row text-dark' >
+<form action ="" method = "POST">
+    {%  csrf_token %}
+    <label>Podaj hasło</label>
+    <input type="password" name="password">
+    <input type="submit" value="Zatwierdź">
+</form>
+</div>
+</div>
+
+<div class='container p-3 my-3 border text-dark'>
+<a href="/basic_view/"> Powrót do strony głównej </a>
+</div>
+{% endblock %}>

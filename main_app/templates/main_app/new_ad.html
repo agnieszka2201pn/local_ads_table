@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Zarejestruj autora ogłoszeń </title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
 
 <div class="container p-3 my-3 border text-dark">
 <div class="row p3 my-3 border text-dark">
+    <strong>
 Dodaj ogłoszenie
+    </strong>
 </div>
 
-<body>
+
 <div class = 'row text-dark' >
 <form action ="" method = "POST">
     {%  csrf_token %}
@@ -29,12 +23,16 @@ Dodaj ogłoszenie
     </select> <br>
     <label> Wpisz treść ogłoszenia </label>
     <textarea name="content"> </textarea><br>
-    <label> Dane kontaktowe </label>
     <label> Podaj swoje dane kontaktowe (imię, nazwisko, email, telefon) </label>
     <input type="text" name="contact"> <br>
+    <label> Podaj hasło. Zapamiętaj swoje hasło, będzie Ci potrzebne aby usunąć ogłoszenie. </label> <br>
+    <input type="password" name="password" minlength=4>
     <input type="submit" name="submit" value="Zatwierdź">
 </form>
 </div>
 </div>
-</body>
-</html>
+
+<div class='container p-3 my-3 border text-dark'>
+<a href="/basic_view/"> Powrót do strony głównej </a>
+</div>
+{% endblock %}

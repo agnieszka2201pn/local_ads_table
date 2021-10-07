@@ -16,10 +16,11 @@ list_of_categories = ((0, 'inne'),
 
 # tabela ogłoszeń
 class Ad(models.Model):
-    title = models.CharField(max_length=64, null=True)
+    title = models.CharField(max_length=64)
     content = models.TextField(null=True)
     category = models.IntegerField(choices=list_of_categories, default=0)
-    contact = models.TextField(null=True)
+    contact = models.TextField()
+    password = models.CharField(max_length=64)
 
     def __str__(self):
         return self.title

@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Lokalna Tablica Ogłoszeń</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <div class="container p-3 my-3 text-dark">
 <div class="row p-3 my-3 border text-dark">
     <strong>
@@ -54,10 +46,5 @@ WITAMY W LOKALNEJ TABLICY OGŁOSZEŃ DSM NIEPRUSZEWO
  </form>
 
 </div>
-</body>
 
-{#<footer>#}
-{#        Lokalna tablica ogłoszeń, wersja: {{ version }} <br>#}
-{#        Dzisiaj jest {{ now }}#}
-{#</footer>#}
-</html>
+{% endblock %}
